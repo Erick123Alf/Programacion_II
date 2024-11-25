@@ -1,7 +1,8 @@
 CREATE DATABASE Actividad_1;
+USE Actividad_1
 
-CREATE TABLE Empleados (
-NumeroEmpleado INT IDENTITY (1,1) PRIMARY KEY,
+CREATE TABLE Empleado2 (
+NumeroEmpleado INT PRIMARY KEY IDENTITY (1,1) ,
 Nombre VARCHAR (50) NOT NULL,
 ApellidoPaterno VARCHAR (50) NOT NULL,
 ApellidoMaterno VARCHAR (50), 
@@ -16,7 +17,7 @@ DescripcionPuesto VARCHAR (100) NOT NULL,
 Directivo BIT NOT NULL
 );
 
-INSERT INTO Empleados(Nombre, ApellidoPaterno, ApellidoMaterno,FechaNacimiento, RFC, CentroTrabajo, 
+INSERT INTO Empleado2(Nombre, ApellidoPaterno, ApellidoMaterno,FechaNacimiento, CentroTrabajo, 
 Puesto, DescripcionPuesto, Directivo)
 VALUES
 ('Juan', 'Perez', 'Gomez', '1985-06-15', 'Oficina Central', 'Gerente de Ventas', 'Responsable de la gestión del equipo de ventas', 1),
@@ -25,21 +26,16 @@ VALUES
 ('Laura', 'Martinez', 'Jimenez', '1983-08-19', 'Sucursal Sur', 'Jefa de Recursos Humanos', 'Gestiona el departamento de recursos humanos', 0),
 ('Carlos', 'Herrera', 'Ruiz', '1995-02-10', 'Oficina Central', 'Desarrollador de Software', 'Desarrollo y mantenimiento de aplicaciones internas', 0);
 
-CREATE TABLE Directivos (
-NumeroDirectivo INT IDENTITY (1,1) PRIMARY KEY,
-Nombre_Dir VARCHAR (50) NOT NULL,
-ApePaterno_Dir VARCHAR (50) NOT NULL,
-ApeMaterno_Dir VARCHAR (50), 
-FechaNacimiento_Dir DATE NOT NULL,
-RFC AS (UPPER(LEFT(Nombre_Dir, 1)+
-LEFT (ApePaterno_Dir, 2)+
-LEFT (ApeMaterno_Dir, 3)+
-FORMAT(FechaNacimiento_Dir, 'YYMMDD'))),
-CentroTrabajo VARCHAR (15) NOT NULL,
-Puesto VARCHAR (100) NOT NULL,
-DescripcionPuesto VARCHAR (100) NOT NULL,
-Directivo BIT NOT NULL,
-Centro_Supervision INT NOT NULL,
+CREATE TABLE Directivo2 (
+NumeroEmpleado INT PRIMARY KEY IDENTITY (1,1) ,
+Centro_Supervision VARCHAR NOT NULL,
 Prestacion_Combustible BIT NOT NULL
 );
 
+INSERT INTO Directivo2(Centro_Supervision, Prestacion_Combustible)
+VALUES
+('Ventas', 1),
+('No tiene', 0),
+('Finanzas', 1),
+('RH', 0),
+('No Tiene', 1);
